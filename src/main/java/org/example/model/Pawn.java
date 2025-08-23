@@ -16,14 +16,9 @@ public class Pawn implements ChessPiece{
         String column = String.valueOf(currentPosition.charAt(0));
         List<String> positions = new ArrayList<>();
         if (row<8) {
-           String newPosition = column + String.valueOf(row+1);
+           String newPosition = column + (row + 1);
            positions.add(newPosition);
         }
         return positions;
-    }
-
-    @Override
-    public String getCurrentPosition() {
-        return currentPosition;
     }
 }

@@ -4,5 +4,4 @@ import java.util.List;
 
 public interface ChessPiece {
     List<String> getPossibleMoves();
-    String getCurrentPosition();
 }
