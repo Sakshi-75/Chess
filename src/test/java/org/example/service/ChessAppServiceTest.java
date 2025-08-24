@@ -38,11 +38,38 @@ class ChessAppServiceTest {
     }
 
     @Test
-    void testKingFromD5() throws Exception {
+    void testKingMovesFromD5() throws Exception {
         List<String> result = ChessAppService.possiblePositions("King", "D5");
         List<String> expected = List.of("C6", "D6", "E6", "C5", "E5", "C4", "D4", "E4");
         assertNotNull(result);
         assertEquals(8, result.size());
+        assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    void testKingMovesFromLeftEdge() throws Exception {
+        List<String> result = ChessAppService.possiblePositions("King", "A5");
+        List<String> expected = List.of("A6", "B6", "B5", "A4", "B4");
+        assertNotNull(result);
+        assertEquals(5, result.size());
+        assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    void testKingMovesFromRightEdge() throws Exception {
+        List<String> result = ChessAppService.possiblePositions("King", "H5");
+        List<String> expected = List.of("H6", "G6", "G5", "H4", "G4");
+        assertNotNull(result);
+        assertEquals(5, result.size());
+        assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
+    @Test
+    void testKingMovesFromCorner() throws Exception {
+        List<String> result = ChessAppService.possiblePositions("King", "A1");
+        List<String> expected = List.of("A2", "B2", "B1");
+        assertNotNull(result);
+        assertEquals(3, result.size());
         assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
     }
 

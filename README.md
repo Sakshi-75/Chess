@@ -9,6 +9,7 @@ Valid chess piece types are:
 3. Pawn
 4. Bishop
 5. Rook
+6. Knight
 
 Currently, the program outputs moves assuming its a standard board of size 8x8.
 The board looks like:
