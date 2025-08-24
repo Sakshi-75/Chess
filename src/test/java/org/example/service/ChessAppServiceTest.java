@@ -23,4 +23,9 @@ class ChessAppServiceTest {
         assertDoesNotThrow(() -> ChessAppService.possiblePositions("Pawn", "A3"));
     }
 
+    @Test
+    void testValidPositionCaseHandling() {
+        assertDoesNotThrow(() -> ChessAppService.possiblePositions("Pawn", "a3"));
+    }
+
 }

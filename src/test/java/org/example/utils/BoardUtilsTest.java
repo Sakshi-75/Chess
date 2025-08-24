@@ -14,7 +14,7 @@ class BoardUtilsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"A9","Z5", "B0", "I3"})
+    @ValueSource(strings = {"A9","Z5", "B0", "I3", "B10", "C", ""})
     void testInvalidPosition(String position) {
         assertFalse(BoardUtils.isValidPositionOnBoard(position));
     }

@@ -49,4 +49,15 @@ class KingTest {
         assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
     }
 
+    @Test
+    void testMovesFromBottomEdge() {
+        king.setCurrentPosition("D1");
+        List<String> result = king.getPossibleMoves();
+        List<String> expected = List.of("C1", "C2", "D2", "E2", "E1");
+
+        assertNotNull(result);
+        assertEquals(5, result.size());
+        assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
+    }
+
 }

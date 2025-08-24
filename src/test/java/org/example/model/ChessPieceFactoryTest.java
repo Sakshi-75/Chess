@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class ChessPieceFactoryTest {
@@ -17,7 +17,7 @@ class ChessPieceFactoryTest {
     @MethodSource(value = "getChessPieceTypes")
     void testCreateChessPiece(String pieceType, Class<?> expectedClass) throws Exception {
         ChessPiece chessPiece = ChessPieceFactory.createChessPiece(pieceType, "A1");
-        assertTrue(expectedClass.isInstance(chessPiece));
+        assertInstanceOf(expectedClass, chessPiece);
     }
 
     static Stream<Arguments> getChessPieceTypes() {
@@ -32,5 +32,11 @@ class ChessPieceFactoryTest {
     @Test
     void testInvalidPieceType() {
         assertThrows(Exception.class, () -> ChessPieceFactory.createChessPiece("Dummy", "A1"));
+    }
+
+    @Test
+    void testHandlePieceTypeWrongCase() throws Exception {
+        ChessPiece chessPiece = ChessPieceFactory.createChessPiece("KING", "A4");
+        assertInstanceOf(King.class, chessPiece);
     }
 }
