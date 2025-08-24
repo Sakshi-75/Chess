@@ -12,7 +12,7 @@ public class Pawn implements ChessPiece{
 
     @Override
     public List<String> getPossibleMoves() {
-        int row = Integer.parseInt(String.valueOf(currentPosition.charAt(1)));
+        int row = Character.getNumericValue(currentPosition.charAt(1));
         String column = String.valueOf(currentPosition.charAt(0));
         List<String> positions = new ArrayList<>();
         if (row<8) {

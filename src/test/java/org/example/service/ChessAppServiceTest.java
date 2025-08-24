@@ -2,9 +2,12 @@ package org.example.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.CollectionUtils;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChessAppServiceTest {
@@ -32,6 +35,15 @@ class ChessAppServiceTest {
     @Test
     void invalidRowValue() {
         Assertions.assertThrows(Exception.class, ()-> ChessAppService.possiblePositions("Pawn", "Z5"));
+    }
+
+    @Test
+    void testKingFromD5() throws Exception {
+        List<String> result = ChessAppService.possiblePositions("King", "D5");
+        List<String> expected = List.of("C6", "D6", "E6", "C5", "E5", "C4", "D4", "E4");
+        assertNotNull(result);
+        assertEquals(8, result.size());
+        assertThat(result).containsExactlyInAnyOrderElementsOf(expected);
     }
 
 }
