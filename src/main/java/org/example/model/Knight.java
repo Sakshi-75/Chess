@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Knight implements ChessPiece{
 
-    private final String currentPosition;
+    private String currentPosition;
 
     public Knight(String currentPosition) {
         this.currentPosition = currentPosition;
@@ -30,5 +30,10 @@ public class Knight implements ChessPiece{
             }
         }
         return moves;
+    }
+
+    @Override
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }

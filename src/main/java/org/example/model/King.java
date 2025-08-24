@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class King implements ChessPiece{
-    private final String currentPosition;
+    private String currentPosition;
 
     public King(String currentPosition) {
         this.currentPosition = currentPosition;
@@ -29,5 +29,10 @@ public class King implements ChessPiece{
             }
         }
         return moves;
+    }
+
+    @Override
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }

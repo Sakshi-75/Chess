@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn implements ChessPiece{
-    private final String currentPosition;
+    private String currentPosition;
 
     public Pawn(String currentPosition) {
         this.currentPosition = currentPosition;
@@ -20,5 +20,10 @@ public class Pawn implements ChessPiece{
            positions.add(newPosition);
         }
         return positions;
+    }
+
+    @Override
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }
