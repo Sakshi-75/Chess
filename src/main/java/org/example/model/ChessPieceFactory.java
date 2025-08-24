@@ -6,6 +6,7 @@ public class ChessPieceFactory {
             case "pawn" -> new Pawn(position);
             case "king" -> new King(position);
             case "knight" -> new Knight(position);
+            case "queen" -> new Queen(position);
             default -> throw new Exception("Invalid piece type");
         };
     }

@@ -14,4 +14,8 @@ public class BoardUtils {
 
         return true;
     }
+
+    public static String inChessNotation(int row, int col) {
+        return ""+ (char)('A'+col) + (row);
+    }
 }

@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.utils.BoardUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +14,12 @@ public class Pawn implements ChessPiece{
 
     @Override
     public List<String> getPossibleMoves() {
-        int row = Character.getNumericValue(currentPosition.charAt(1));
-        String column = String.valueOf(currentPosition.charAt(0));
+        int currRow = Character.getNumericValue(currentPosition.charAt(1));
+        int currCol = currentPosition.charAt(0) - 'A';
         List<String> positions = new ArrayList<>();
-        if (row<8) {
-           String newPosition = column + (row + 1);
-           positions.add(newPosition);
-        }
+        String newPosition = BoardUtils.inChessNotation(currRow+1, currCol);
+        if(BoardUtils.isValidPositionOnBoard(newPosition))
+            positions.add(newPosition);
         return positions;
     }
 

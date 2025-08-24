@@ -23,7 +23,7 @@ public class King implements ChessPiece{
         for(int i=0; i<8; i++) {
             newRow[i]+=currRow;
             newCol[i]+=currCol;
-            String newPosition = ""+ (char)('A'+newCol[i]) + (newRow[i]);
+            String newPosition = BoardUtils.inChessNotation(newRow[i], newCol[i]);
             if(BoardUtils.isValidPositionOnBoard(newPosition)) {
                 moves.add(newPosition);
             }

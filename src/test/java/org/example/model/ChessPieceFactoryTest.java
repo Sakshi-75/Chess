@@ -24,7 +24,8 @@ class ChessPieceFactoryTest {
         return Stream.of(
                 Arguments.of("Pawn", Pawn.class),
                 Arguments.of("King", King.class),
-                Arguments.of("Knight", Knight.class)
+                Arguments.of("Knight", Knight.class),
+                Arguments.of("Queen", Queen.class)
         );
     }
 
