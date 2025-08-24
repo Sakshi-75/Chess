@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.King;
+import org.example.model.Knight;
 import org.example.model.Pawn;
 import org.example.utils.BoardUtils;
 
@@ -17,8 +18,12 @@ public class ChessAppService {
                 return pawn.getPossibleMoves();
             }
             case "king": {
-                King king =new King(position);
+                King king = new King(position);
                 return king.getPossibleMoves();
+            }
+            case "knight": {
+                Knight knight = new Knight(position);
+                return knight.getPossibleMoves();
             }
         }
         return null;
