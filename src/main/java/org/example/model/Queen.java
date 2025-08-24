@@ -20,73 +20,32 @@ public class Queen implements ChessPiece{
         List<String> moves = new ArrayList<>();
         int currRow = Character.getNumericValue(currentPosition.charAt(1));
         int currCol = currentPosition.charAt(0) - 'A';
-        //diagonal top left
-        int move = 1;
-        while (true) {
-            int newRow = currRow + move;
-            int newCol = currCol - move;
-            String newPosition = inChessNotation(newRow, newCol);
-            if(isValidPositionOnBoard(newPosition)) {
-                moves.add(newPosition);
-                move++;
-            }
-            else
-                break;
-        }
-        //diagonal top right
-        move = 1;
-        while (true) {
-            int newRow = currRow + move;
-            int newCol = currCol + move;
-            String newPosition = inChessNotation(newRow, newCol);
-            if(isValidPositionOnBoard(newPosition)) {
-                moves.add(newPosition);
-                move++;
-            }
-            else
-                break;
-        }
-        //diagonal bottom left
-        move = 1;
-        while (true) {
-            int newRow = currRow - move;
-            int newCol = currCol - move;
-            String newPosition = inChessNotation(newRow, newCol);
-            if(isValidPositionOnBoard(newPosition)) {
-                moves.add(newPosition);
-                move++;
-            }
-            else
-                break;
-        }
-        //diagonal bottom right
-        move = 1;
-        while (true) {
-            int newRow = currRow - move;
-            int newCol = currCol + move;
-            String newPosition = inChessNotation(newRow, newCol);
-            if(isValidPositionOnBoard(newPosition)) {
-                moves.add(newPosition);
-                move++;
-            }
-            else
-                break;
-        }
+        int[][] directions = {
+                {1, -1},  // diagonal top left
+                {1, 1},   // diagonal top right
+                {-1, -1}, // diagonal bottom left
+                {-1, 1},  // diagonal bottom right
+                {1, 0},   // vertical up
+                {-1, 0},  // vertical down
+                {0, -1},  // horizontal left
+                {0, 1}    // horizontal right
+        };
 
-        //vertical
-        for (int i=1; i<=8; i++) {
-            String newPosition = inChessNotation(i, currCol);
-            if(newPosition.equals(currentPosition))
-                continue;
-            moves.add(newPosition);
-        }
+        for (int[] dir : directions) {
+            int row = currRow;
+            int col = currCol;
 
-        //horizontal
-        for (int i=0; i<8; i++) {
-            String newPosition = inChessNotation(currRow, i);
-            if(newPosition.equals(currentPosition))
-                continue;
-            moves.add(newPosition);
+            while (true) {
+                row += dir[0];
+                col += dir[1];
+                String newPosition = inChessNotation(row, col);
+
+                if (isValidPositionOnBoard(newPosition)) {
+                    moves.add(newPosition);
+                } else {
+                    break;
+                }
+            }
         }
 
         return moves;
